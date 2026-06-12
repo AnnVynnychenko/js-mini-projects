@@ -10,7 +10,45 @@
     <header>
       <h1>Distance Converter</h1>
     </header>
-    <section></section>
+    <section>
+      <form>
+        <label
+          >Convert from:
+          <select name="from-unit" required>
+            <option value="" disabled selected hidden>Choose unit...</option>
+            <option value="m">meters</option>
+            <option value="cm">centimeters</option>
+            <option value="in">inches</option>
+            <option value="ft">feet</option>
+            <option value="yd">yards</option>
+            <option value="mm">millimeters</option>
+            <option value="km">kilometers</option>
+          </select></label
+        >
+        <label
+          >Convert to:
+          <select name="to-unit" required>
+            <option value="" disabled selected hidden>Choose unit...</option>
+            <option value="m">meters</option>
+            <option value="cm">centimeters</option>
+            <option value="in">inches</option>
+            <option value="ft">feet</option>
+            <option value="yd">yards</option>
+            <option value="mm">millimeters</option>
+            <option value="km">kilometers</option>
+          </select></label
+        >
+        <label
+          >Enter a number to convert<input
+            type="number"
+            name="converted-data"
+            required
+          />
+        </label>
+        <button type="submit">Send</button>
+        <label>Result<output id="result">0.00</output></label>
+      </form>
+    </section>
     <script type="module" src="./app-converter.js"></script>
   </body>
 </html>

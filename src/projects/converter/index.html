@@ -11,10 +11,10 @@
       <h1>Distance Converter</h1>
     </header>
     <section>
-      <form>
+      <form class="converter-form">
         <label
           >Convert from:
-          <select name="from-unit" required>
+          <select class="convert-from" name="fromUnit" required>
             <option value="" disabled selected hidden>Choose unit...</option>
             <option value="m">meters</option>
             <option value="cm">centimeters</option>
@@ -27,7 +27,7 @@
         >
         <label
           >Convert to:
-          <select name="to-unit" required>
+          <select class="convert-to" name="toUnit" required>
             <option value="" disabled selected hidden>Choose unit...</option>
             <option value="m">meters</option>
             <option value="cm">centimeters</option>
@@ -40,13 +40,15 @@
         >
         <label
           >Enter a number to convert<input
+            class="converted-value"
             type="number"
-            name="converted-data"
+            name="convertedData"
+            step="any"
             required
           />
         </label>
-        <button type="submit">Send</button>
-        <label>Result<output id="result">0.00</output></label>
+        <button class="form-button" type="submit">Send</button>
+        <label>Result <output id="result">0.00</output></label>
       </form>
     </section>
     <script type="module" src="./app-converter.js"></script>

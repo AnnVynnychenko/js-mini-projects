@@ -14,4 +14,6 @@ export default defineConfig({
       },
     },
   },
+
+  base: '/js-mini-projects/',
 });

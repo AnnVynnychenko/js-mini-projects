@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Distance Converter</title>
+    <link rel="stylesheet" href="../../base.css" />
+    <link rel="stylesheet" href="./style-converter.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1 class="project-name">Distance Converter</h1>
+      </header>
+      <section>
+        <form class="converter-form">
+          <label class="converter-label"
+            >Convert from:
+            <select class="units convert-from" name="fromUnit" required>
+              <option value="" disabled selected hidden>Choose unit...</option>
+              <option value="m">meters</option>
+              <option value="cm">centimeters</option>
+              <option value="in">inches</option>
+              <option value="ft">feet</option>
+              <option value="yd">yards</option>
+              <option value="mm">millimeters</option>
+              <option value="km">kilometers</option>
+            </select></label
+          >
+          <label class="converter-label"
+            >Convert to:
+            <select class="units convert-to" name="toUnit" required>
+              <option value="" disabled selected hidden>Choose unit...</option>
+              <option value="m">meters</option>
+              <option value="cm">centimeters</option>
+              <option value="in">inches</option>
+              <option value="ft">feet</option>
+              <option value="yd">yards</option>
+              <option value="mm">millimeters</option>
+              <option value="km">kilometers</option>
+            </select></label
+          >
+          <label class="converter-label"
+            >Enter a number to convert:<input
+              class="converted-value"
+              type="number"
+              name="convertedData"
+              step="any"
+              required
+            />
+          </label>
+          <button class="form-button" type="submit">Send</button>
+          <label class="converter-label result-value"
+            >Result <output id="result">0.00</output></label
+          >
+        </form>
+      </section>
+    </div>
+    <script type="module" src="./app-converter.js"></script>
+  </body>
+</html>

@@ -17,7 +17,7 @@ function calculateConversion(convertedData, fromUnit, toUnit) {
   return (convertedData * fromRate) / toRate;
 }
 
-converterForm.addEventListener('submit', event => {
+function handleSubmit(event) {
   event.preventDefault();
   const form = event.target;
   const formData = new FormData(form);
@@ -31,4 +31,6 @@ converterForm.addEventListener('submit', event => {
   const finalResult = calculateConversion(convertedData, fromUnit, toUnit);
 
   result.textContent = `${finalResult.toFixed(2)} ${toUnit}`;
-});
+}
+
+converterForm.addEventListener('submit', handleSubmit);

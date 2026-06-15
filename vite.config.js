@@ -11,6 +11,7 @@ export default defineConfig({
       input: {
         main: resolve(__dirname, 'src/index.html'),
         converter: resolve(__dirname, 'src/projects/converter/converter.html'),
+        filter: resolve(__dirname, 'src/projects/filter/filter.html'),
       },
     },
   },

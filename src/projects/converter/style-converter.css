@@ -33,7 +33,6 @@
 
 .converted-value {
   padding: 10px 16px;
-  -moz-appearance: textfield;
 }
 
 .converted-value:is(:hover, :focus) {

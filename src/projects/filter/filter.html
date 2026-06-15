@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FilterFlow</title>
+    <link rel="stylesheet" href="../../base.css" />
+    <link rel="stylesheet" href="./style-filter.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1 class="project-name">FilterFlow</h1>
+      </header>
+      <main>
+        <section>
+          <span>Load Test Presets:</span>
+          <button type="button" class="preset-btn" data-preset="include">
+            Include & Sort (John)
+          </button>
+          <button type="button" class="preset-btn" data-preset="exclude-or">
+            Exclude OR (John/Mail)
+          </button>
+          <button type="button" class="preset-btn" data-preset="exclude-and">
+            Exclude AND (Rating)
+          </button>
+        </section>
+        <form class="filter-form">
+          <label>
+            Input JSON (Data & Conditions)
+            <textarea
+              id="json-input"
+              class="panel-textarea"
+              name="jsonInput"
+              placeholder='Paste your JSON here... &#10;Example:&#10;{&#10;  "data": [...],&#10;  "condition": {...}&#10;}'
+              required
+            ></textarea>
+          </label>
+          <label>
+            Resulting JSON (Output)
+            <textarea
+              id="json-output"
+              class="panel-textarea"
+              readonly
+              placeholder="Processed results will appear here..."
+            ></textarea>
+          </label>
+          <button type="submit" class="process-btn">Process Data</button>
+        </form>
+      </main>
+    </div>
+    <script type="module" src="./app-filter.js"></script>
+  </body>
+</html>

@@ -13,17 +13,11 @@
         <h1 class="project-name">FilterFlow</h1>
       </header>
       <main>
-        <section>
+        <section class="preset-btn">
           <span>Load Test Presets:</span>
-          <button type="button" class="preset-btn" data-preset="include">
-            Include & Sort (John)
-          </button>
-          <button type="button" class="preset-btn" data-preset="exclude-or">
-            Exclude OR (John/Mail)
-          </button>
-          <button type="button" class="preset-btn" data-preset="exclude-and">
-            Exclude AND (Rating)
-          </button>
+          <button type="button" data-preset="include">Filter & Sort</button>
+          <button type="button" data-preset="exclude-or">Exclude OR</button>
+          <button type="button" data-preset="exclude-and">Exclude AND</button>
         </section>
         <form class="filter-form">
           <label>
@@ -33,7 +27,6 @@
               class="panel-textarea"
               name="jsonInput"
               placeholder='Paste your JSON here... &#10;Example:&#10;{&#10;  "data": [...],&#10;  "condition": {...}&#10;}'
-              required
             ></textarea>
           </label>
           <label>
@@ -46,6 +39,14 @@
             ></textarea>
           </label>
           <button type="submit" class="process-btn">Process Data</button>
+          <label class="panel-label">
+            Filtering and Sorting Conditions
+            <textarea
+              id="conditions"
+              name="jsonCondition"
+              placeholder='Paste your rules here...&#10;Example:&#10;{&#10;  "include": [{"name": "John"}],&#10;  "sortBy": ["email"]&#10;}'
+            ></textarea>
+          </label>
         </form>
       </main>
     </div>

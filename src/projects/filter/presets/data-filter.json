@@ -1,0 +1,14 @@
+{
+  "data": [
+    { "name": "Tereza", "email": "tereza.kratochvilova@gmail.com" },
+    { "name": "Erik", "email": "erik.novak3@gmail.com" },
+    { "name": "Jan", "email": "jan.dvorak2@gmail.com" },
+    { "name": "Tereza", "email": "tereza.cerna@gmail.com" },
+    { "name": "Erik", "email": "erik.novak1@gmail.com" },
+    { "name": "Anna", "email": "anna.vesela@gmail.com" },
+    { "name": "Jan", "email": "jan.dvorak1@gmail.com" },
+    { "name": "Erik", "email": "erik.novak2@gmail.com" },
+    { "name": "Jan", "email": "jan.dvorak3@gmail.com" },
+    { "name": "Jan", "email": "jan.dvorak4@gmail.com" }
+  ]
+}

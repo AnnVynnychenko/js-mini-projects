@@ -45,11 +45,20 @@ function handleSubmit(event) {
   if (!validateFields(rawDataText, rawConditionsText)) {
     return;
   }
+  let dataObj = {};
+  let conditionsObj = {};
+  try {
+    dataObj = JSON.parse(rawDataText);
+    conditionsObj = JSON.parse(rawConditionsText);
+  } catch (parseError) {
+    console.error('Parsing error:', parseError.message);
+    alert(
+      'Invalid JSON syntax! Please check your brackets, commas, or quotes.'
+    );
+    return;
+  }
 
   try {
-    const dataObj = JSON.parse(rawDataText);
-    const conditionsObj = JSON.parse(rawConditionsText);
-
     const dataArr = dataObj.data || dataObj;
 
     if (!Array.isArray(dataArr)) {
@@ -63,9 +72,9 @@ function handleSubmit(event) {
     const filterResult = filterByCondition(dataArr, conditionFilterArr);
     const finalResult = sortByCondition(filterResult, conditionSortByArr);
     jsonOutput.value = JSON.stringify({ result: finalResult });
-    console.log(finalResult);
-  } catch (error) {
-    console.error('Parsing error:', error.message);
+  } catch (validationError) {
+    console.error('Validation error:', validationError.message);
+    alert(validationError.message);
   }
 }
 

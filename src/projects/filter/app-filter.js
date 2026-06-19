@@ -1,5 +1,6 @@
 import { filterByCondition } from './modules/filter-rules.js';
 import { sortByCondition } from './modules/sort-rules.js';
+import { excludeOrByKeys } from './modules/exclude-or-rules.js';
 
 const filterForm = document.querySelector('.filter-form');
 const jsonInput = document.querySelector('#json-input');
@@ -71,12 +72,20 @@ function handleSubmit(event) {
     }
 
     const conditionsBody = conditionsObj.condition || conditionsObj;
-    const conditionFilterArr = conditionsBody.include;
-    const conditionSortByArr = conditionsBody.sortBy;
 
-    const filterResult = filterByCondition(dataArr, conditionFilterArr);
-    const finalResult = sortByCondition(filterResult, conditionSortByArr);
-    jsonOutput.value = JSON.stringify({ result: finalResult });
+    let currentResult = [...dataArr];
+
+    if (conditionsBody.include) {
+      const conditionFilterArr = conditionsBody.include;
+      const conditionSortByArr = conditionsBody.sortBy;
+      const filterResult = filterByCondition(dataArr, conditionFilterArr);
+      currentResult = sortByCondition(filterResult, conditionSortByArr);
+    } else {
+      const conditionsExcludeOr = conditionsBody.exclude;
+      currentResult = excludeOrByKeys(dataArr, conditionsExcludeOr);
+    }
+
+    jsonOutput.value = JSON.stringify(currentResult);
   } catch (validationError) {
     console.error('Validation error:', validationError.message);
     alert(validationError.message);

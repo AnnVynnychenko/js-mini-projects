@@ -22,7 +22,7 @@ async function handleClick(event) {
   if (event.target.classList.contains('preset-btn')) {
     const presetKey = event.target.dataset.preset;
     try {
-      const response = await fetch(`presets/${presetKey}.json`);
+      const response = await fetch(`/presets/${presetKey}.json`);
 
       if (!response.ok) throw new Error('File not found');
 

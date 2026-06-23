@@ -8,6 +8,7 @@ const jsonInput = document.querySelector('#json-input');
 const jsonOutput = document.querySelector('#json-output');
 const conditions = document.querySelector('#conditions');
 const presetsSection = document.querySelector('.presets-section');
+const resetBtn = document.querySelector('#reset-btn');
 
 function validateFields(data, conditions) {
   if (!data || !conditions) {
@@ -107,5 +108,12 @@ function handleSubmit(event) {
   }
 }
 
+function resetAll() {
+  jsonInput.value = '';
+  jsonOutput.value = '';
+  conditions.value = '';
+}
+
 presetsSection.addEventListener('click', handleClick);
 filterForm.addEventListener('submit', handleSubmit);
+resetBtn.addEventListener('click', resetAll);

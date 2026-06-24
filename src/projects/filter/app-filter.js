@@ -10,6 +10,8 @@ const conditions = document.querySelector('#conditions');
 const presetsSection = document.querySelector('.presets-section');
 const resetBtn = document.querySelector('#reset-btn');
 
+let isInputChanged = true;
+
 function validateFields(data, conditions) {
   if (!data || !conditions) {
     alert('Please fill in both fields!');
@@ -18,7 +20,7 @@ function validateFields(data, conditions) {
   return true;
 }
 
-async function handleClick(event) {
+async function handleClickPresets(event) {
   if (event.target.classList.contains('preset-btn')) {
     const presetKey = event.target.dataset.preset;
     try {
@@ -33,6 +35,7 @@ async function handleClick(event) {
       if (presetKey === 'user-data') {
         const rawData = preset.data || preset;
         jsonInput.value = JSON.stringify(rawData, null, 2);
+        isInputChanged = true;
       } else {
         const rawConditions = preset.condition || preset;
         conditions.value = JSON.stringify(rawConditions, null, 2);
@@ -49,11 +52,12 @@ function handleSubmit(event) {
 
   let rawDataText = '';
 
-  if (jsonOutput.value.trim() !== '') {
-    rawDataText = jsonOutput.value.trim();
-  } else {
+  if (jsonOutput.value.trim() === '' || isInputChanged) {
     rawDataText = jsonInput.value.trim();
+  } else {
+    rawDataText = jsonOutput.value.trim();
   }
+
   const rawConditionsText = conditions.value.trim();
 
   let userData = {};
@@ -104,6 +108,7 @@ function handleSubmit(event) {
     }
 
     jsonOutput.value = JSON.stringify(currentResult, null, 2);
+    isInputChanged = false;
   } catch (validationError) {
     console.error('Validation error:', validationError.message);
     alert(validationError.message);
@@ -114,8 +119,10 @@ function resetAll() {
   jsonInput.value = '';
   jsonOutput.value = '';
   conditions.value = '';
+  isInputChanged = true;
 }
 
-presetsSection.addEventListener('click', handleClick);
+presetsSection.addEventListener('click', handleClickPresets);
+jsonInput.addEventListener('input', () => (isInputChanged = true));
 filterForm.addEventListener('submit', handleSubmit);
 resetBtn.addEventListener('click', resetAll);

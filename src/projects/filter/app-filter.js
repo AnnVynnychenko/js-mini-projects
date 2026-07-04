@@ -21,29 +21,30 @@ function validateFields(data, conditions) {
 }
 
 async function handleClickPresets(event) {
-  if (event.target.classList.contains('preset-btn')) {
-    const presetKey = event.target.dataset.preset;
-    try {
-      const url = new URL(`./presets/${presetKey}.json`, import.meta.url);
+  if (!event.target.classList.contains('preset-btn')) {
+    return;
+  }
+  const presetKey = event.target.dataset.preset;
+  try {
+    const url = new URL(`./presets/${presetKey}.json`, import.meta.url);
 
-      const response = await fetch(url);
+    const response = await fetch(url);
 
-      if (!response.ok) throw new Error('File not found');
+    if (!response.ok) throw new Error('File not found');
 
-      const preset = await response.json();
+    const preset = await response.json();
 
-      if (presetKey === 'user-data') {
-        const rawData = preset.data || preset;
-        jsonInput.value = JSON.stringify(rawData, null, 2);
-        isInputChanged = true;
-      } else {
-        const rawConditions = preset.condition || preset;
-        conditions.value = JSON.stringify(rawConditions, null, 2);
-      }
-    } catch (error) {
-      console.error('Error loading preset:', error.message);
-      alert(`Could not load preset file: ${presetKey}.json`);
+    if (presetKey === 'user-data') {
+      const rawData = preset.data || preset;
+      jsonInput.value = JSON.stringify(rawData, null, 2);
+      isInputChanged = true;
+    } else {
+      const rawConditions = preset.condition || preset;
+      conditions.value = JSON.stringify(rawConditions, null, 2);
     }
+  } catch (error) {
+    console.error('Error loading preset:', error.message);
+    alert(`Could not load preset file: ${presetKey}.json`);
   }
 }
 

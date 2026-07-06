@@ -12,6 +12,7 @@ export default defineConfig({
         main: resolve(__dirname, 'src/index.html'),
         converter: resolve(__dirname, 'src/projects/converter/converter.html'),
         filter: resolve(__dirname, 'src/projects/filter/filter.html'),
+        tttGame: resolve(__dirname, 'src/projects/ttt-game/ttt.html'),
       },
     },
   },

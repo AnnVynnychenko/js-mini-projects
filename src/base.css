@@ -20,6 +20,7 @@
   --btn-reset-color: #ff858f;
   --bg-reset-hover: #e06c75;
   --border-reset-hover: #e06c75;
+  --border-transparent: rgba(77, 90, 229, 0.3);
   --bg--color-reset: rgba(224, 108, 117, 0.12);
   --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.05);
   --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.08);

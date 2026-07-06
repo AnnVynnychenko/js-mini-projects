@@ -11,23 +11,46 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./base.css" />
+    <link rel="stylesheet" href="./dashboard.css" />
   </head>
   <body>
-    <header><h1>JavaScript mini-projects</h1></header>
-    <main>
-      <nav>
-        <ul>
-          <li>
-            <a href="./projects/converter/converter.html"
-              >1. Distance Converter</a
-            >
-          </li>
-          <li>
-            <a href="./projects/filter/filter.html">2. FilterFlow</a>
-          </li>
-        </ul>
-      </nav>
-    </main>
+    <div class="container main-dashboard">
+      <header class="dashboard-header">
+        <h1 class="dashboard-title">JavaScript mini-projects</h1>
+      </header>
+      <main>
+        <nav>
+          <ul class="projects-grid">
+            <li class="project-card">
+              <a href="./projects/converter/converter.html" class="project-link"
+                ><span class="project-num">01</span>
+                <div class="project-info">
+                  <h2 class="project-name">Distance Converter</h2>
+                  <p class="project-desc">
+                    Fast and reliable utility for converting metric and imperial
+                    distance units.
+                  </p>
+                </div>
+                <div class="project-arrow">→</div></a
+              >
+            </li>
+            <li class="project-card">
+              <a href="./projects/filter/filter.html" class="project-link"
+                ><span class="project-num">02</span>
+                <div class="project-info">
+                  <h2 class="project-name">FilterFlow</h2>
+                  <p class="project-desc">
+                    Data query studio for dynamic filtering, sorting, and JSON
+                    parsing.
+                  </p>
+                </div>
+                <div class="project-arrow">→</div></a
+              >
+            </li>
+          </ul>
+        </nav>
+      </main>
+    </div>
     <script type="module" src="./main.js"></script>
   </body>
 </html>

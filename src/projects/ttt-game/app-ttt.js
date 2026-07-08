@@ -1,15 +1,19 @@
 import { wins } from './data-wins.js';
 
 const container = document.querySelector('.js-content');
+const tableScore = document.querySelector('.js-score');
 const winner = document.querySelector('.js-winner');
+const resetScoreBtn = document.querySelector('.js-reset-score');
 
 container.addEventListener('click', onClick);
-
+resetScoreBtn.addEventListener('click', resetHandler);
 let player = 'X';
 let historyX = [];
 let historyO = [];
+let scorePlayerX = 0;
+let scorePlayerO = 0;
 
-function createMarkup() {
+function createMarkupGameField() {
   let markup = '';
   for (let i = 1; i < 10; i += 1) {
     markup += `<div class="item js-item" data-id = ${i}></div>`;
@@ -17,7 +21,22 @@ function createMarkup() {
   container.innerHTML = markup;
 }
 
-createMarkup();
+createMarkupGameField();
+
+function updateScore(scorePlayerX, scorePlayerO) {
+  const markupTableScore = ` <tr>
+              <td>Player X</td>
+              <td>${scorePlayerX}</td>
+            </tr>
+            <tr>
+              <td>Player O</td>
+              <td>${scorePlayerO}</td>
+            </tr>`;
+
+  tableScore.innerHTML = markupTableScore;
+}
+
+updateScore(scorePlayerX, scorePlayerO);
 
 function onClick(evt) {
   const { target } = evt;
@@ -40,6 +59,13 @@ function onClick(evt) {
 
   if (result) {
     winner.textContent = `Winner ${player} 😎🎉🎊`;
+    if (player === 'X') {
+      scorePlayerX += 1;
+      updateScore(scorePlayerX, scorePlayerO);
+    } else {
+      scorePlayerO += 1;
+      updateScore(scorePlayerX, scorePlayerO);
+    }
     setTimeout(() => {
       resetGame();
     }, 500);
@@ -55,13 +81,18 @@ function onClick(evt) {
   player = player === 'X' ? 'O' : 'X';
 }
 
+function resetHandler() {
+  scorePlayerX = 0;
+  scorePlayerO = 0;
+  updateScore(scorePlayerX, scorePlayerO);
+}
+
 function isWinner(arr) {
   return wins.some(item => item.every(id => arr.includes(id)));
 }
 
 function resetGame() {
-  createMarkup();
+  createMarkupGameField();
   historyX = [];
   historyO = [];
-  player = 'X';
 }

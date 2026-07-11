@@ -25,12 +25,12 @@ createMarkupGameField();
 
 function updateScore(scorePlayerX, scorePlayerO) {
   const markupTableScore = ` <tr>
-              <td>Player X</td>
-              <td>${scorePlayerX}</td>
+              <td class='player-data'>Player X</td>
+              <td class=' player-data score'>${scorePlayerX}</td>
             </tr>
             <tr>
-              <td>Player O</td>
-              <td>${scorePlayerO}</td>
+              <td class='player-data'>Player O</td>
+              <td class='player-data score'>${scorePlayerO}</td>
             </tr>`;
 
   tableScore.innerHTML = markupTableScore;

@@ -59,6 +59,9 @@ function onClick(evt) {
 
   if (result) {
     winner.textContent = `Winner ${player} 😎🎉🎊`;
+    setTimeout(() => {
+      winner.textContent = '';
+    }, 2000);
     if (player === 'X') {
       scorePlayerX += 1;
       updateScore(scorePlayerX, scorePlayerO);
@@ -71,7 +74,10 @@ function onClick(evt) {
     }, 500);
     return;
   } else if (isEndGame) {
-    winner.textContent = `Friendship prevailed 😉`;
+    winner.textContent = `Friendship prevailed`;
+    setTimeout(() => {
+      winner.textContent = '';
+    }, 2000);
     setTimeout(() => {
       resetGame();
     }, 500);
